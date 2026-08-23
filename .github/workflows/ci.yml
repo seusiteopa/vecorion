@@ -1,0 +1,48 @@
+name: CI
+
+# Roda em todo push e pull request — barreira antes de qualquer código quebrado
+# chegar à branch principal, independente do deploy automático da Netlify (que já
+# tem sua própria trava via `npm test && npm run build` no netlify.toml). Ter os
+# dois é intencional: este workflow dá feedback direto na interface do GitHub
+# (visível em pull requests, antes de mergear), o da Netlify é a última barreira
+# antes de publicar de fato.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-e-testes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Checagem de tipos e lint (via build do Next.js)
+        run: npm run build
+        env:
+          # Variáveis fictícias — suficientes para o build compilar (Etapa 9/13:
+          # nenhuma chamada real ao Supabase acontece durante o build, as rotas
+          # de API e o middleware só usam essas variáveis em tempo de requisição,
+          # não em tempo de build). Nunca usar valor real aqui: este workflow é
+          # só para validar que o código compila e tipa corretamente.
+          NEXT_PUBLIC_SUPABASE_URL: "https://ci-placeholder.supabase.co"
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: "ci-placeholder-key"
+          SUPABASE_SERVICE_ROLE_KEY: "ci-placeholder-key"
+
+      - name: Suíte de testes automatizados
+        run: npm test
+
+      - name: Auditoria de dependências (não bloqueia o pipeline, só avisa)
+        run: npm audit --audit-level=critical || true

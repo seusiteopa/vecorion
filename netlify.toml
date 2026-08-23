@@ -1,0 +1,16 @@
+[build]
+  # Roda a suíte de testes automatizados (Etapa 11/13, 51 testes) antes do build —
+  # um deploy nunca deve publicar código que quebra os testes. Se `npm test`
+  # falhar, o build inteiro falha e o Netlify não publica a versão nova.
+  command = "npm test && npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Os cabeçalhos de segurança e cache (Etapa 11/12) já são aplicados via
+# next.config.mjs `headers()` — o plugin oficial do Next para Netlify traduz isso
+# automaticamente, então não são duplicados aqui.
