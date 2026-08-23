@@ -5,6 +5,13 @@
 -- Etapa 7). Este arquivo é definição de dado já aprovada, não uma integração
 -- nova — por isso acompanha a Etapa 9, mesmo com as integrações externas
 -- (IA, e-mail) ainda não conectadas.
+--
+-- ATUALIZAÇÃO PÓS-DEPLOY: a tabela de arquivos deste módulo se chama
+-- `diagnostico_arquivos`, não `arquivos` — renomeada durante o deploy real
+-- porque o projeto Supabase usado (`vecorion-plataforma`) é compartilhado com
+-- outros produtos Vecorion, e já existia uma tabela `arquivos` pertencente a
+-- outro sistema. O bucket de storage `diagnostico-arquivos` (com hífen) nunca
+-- teve esse conflito e manteve o nome original.
 -- ============================================================================
 
 create extension if not exists "pgcrypto";
@@ -81,7 +88,7 @@ on conflict (nome) do nothing;
 -- ----------------------------------------------------------------------------
 -- ARQUIVOS
 -- ----------------------------------------------------------------------------
-create table if not exists arquivos (
+create table if not exists diagnostico_arquivos (
   id uuid primary key default gen_random_uuid(),
   solicitacao_id uuid not null references solicitacoes(id) on delete cascade,
   nome_original text not null,
@@ -91,7 +98,7 @@ create table if not exists arquivos (
   enviado_em timestamptz not null default now()
 );
 
-create index if not exists idx_arquivos_solicitacao_id on arquivos(solicitacao_id);
+create index if not exists idx_diagnostico_arquivos_solicitacao_id on diagnostico_arquivos(solicitacao_id);
 
 -- ----------------------------------------------------------------------------
 -- PERFIS ADMINISTRATIVOS (complementa auth.users do Supabase Auth)
@@ -144,7 +151,7 @@ alter table clientes enable row level security;
 alter table solicitacoes enable row level security;
 alter table ferramentas enable row level security;
 alter table solicitacao_ferramentas enable row level security;
-alter table arquivos enable row level security;
+alter table diagnostico_arquivos enable row level security;
 alter table analises enable row level security;
 alter table perfis_admin enable row level security;
 
@@ -170,7 +177,7 @@ create policy "admin le clientes" on clientes for select using (is_admin_ativo()
 create policy "admin le solicitacoes" on solicitacoes for select using (is_admin_ativo());
 create policy "admin atualiza solicitacoes" on solicitacoes for update using (is_admin_ativo());
 create policy "admin le solicitacao_ferramentas" on solicitacao_ferramentas for select using (is_admin_ativo());
-create policy "admin le arquivos" on arquivos for select using (is_admin_ativo());
+create policy "admin le diagnostico_arquivos" on diagnostico_arquivos for select using (is_admin_ativo());
 create policy "admin le analises" on analises for select using (is_admin_ativo());
 create policy "admin escreve analises" on analises for insert with check (is_admin_ativo());
 create policy "admin atualiza analises" on analises for update using (is_admin_ativo());

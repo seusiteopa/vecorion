@@ -47,7 +47,7 @@ Registrada desde a Etapa 4, nunca implementada (decisão consciente: depende de 
 A arquitetura (Etapa 2/6/7) já foi desenhada para isso — nenhuma mudança estrutural é necessária:
 1. Nova pasta em `app/{nome-do-modulo}/` — rota isolada, herda Header/Footer do Portal automaticamente via `app/layout.tsx`.
 2. Componentes exclusivos em `components/{nome-do-modulo}/`.
-3. Se precisar de dado próprio: tabelas novas no mesmo projeto Supabase (schema isolado por prefixo de tabela, ou um schema Postgres separado se o volume justificar) — nunca reaproveitar as tabelas do Diagnóstico para outro módulo.
+3. Se precisar de dado próprio: tabelas novas no mesmo projeto Supabase (schema isolado por prefixo de tabela, ou um schema Postgres separado se o volume justificar) — nunca reaproveitar as tabelas do Diagnóstico para outro módulo. **Isso já aconteceu na prática**: o projeto real usado no deploy (`vecorion-plataforma`) é compartilhado com outros produtos Vecorion, e já existia uma tabela `arquivos` de outro sistema — por isso a tabela deste módulo se chama `diagnostico_arquivos`, prefixada, não `arquivos`. Ao criar qualquer tabela nova neste projeto, sempre prefixar com o nome do módulo (`diagnostico_*`, `cursos_*`, etc.) para evitar essa colisão de novo.
 4. Se precisar de autenticação própria: reaproveitar o padrão de `perfis_admin` só se fizer sentido a mesma equipe operar os dois módulos; caso contrário, uma tabela de perfil própria por módulo é mais seguro.
 5. Módulos já reservados na arquitetura original (nunca construídos): `/e-commerce/`, `/cursos/`, `/sites/`, `/imagens/`, `/videos/`.
 

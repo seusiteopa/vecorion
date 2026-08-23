@@ -161,7 +161,7 @@ export async function buscarSolicitacaoDetalhada(id: string) {
        tempo_gasto, ferramentas_manter, objetivo, impacto_esperado, contato_preferido,
        melhor_horario, status, prioridade, criado_em,
        clientes(nome, empresa, email, telefone, cargo, segmento),
-       arquivos(id, nome_original, tipo_mime, tamanho_bytes, caminho_storage, enviado_em),
+       diagnostico_arquivos(id, nome_original, tipo_mime, tamanho_bytes, caminho_storage, enviado_em),
        solicitacao_ferramentas(ferramentas(nome))`,
     )
     .eq("id", id)
@@ -253,7 +253,7 @@ export async function registrarArquivo(
   }
 
   const { data, error: erroRegistro } = await supabase
-    .from("arquivos")
+    .from("diagnostico_arquivos")
     .insert({
       solicitacao_id: solicitacaoId,
       nome_original: arquivo.nome,
