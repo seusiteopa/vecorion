@@ -1,19 +1,31 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import Reveal from "@/components/ui/Reveal";
 import Card from "@/components/ui/Card";
 import CtaBanner from "@/components/sections/CtaBanner";
-import { SERVICES } from "@/lib/constants";
+import { listarServicosAtivos } from "@/lib/servidor/supabase/consultas-servicos";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/servicos" },
   title: "Serviços",
-  description: "Sites institucionais e páginas de alta conversão, sob medida para o seu negócio.",
+  description: "Serviços sob medida para o seu negócio — escolha um e conte o que você precisa.",
 };
 
-export default function ServicosPage() {
+/**
+ * Migrado de lista fixa (`lib/constants.ts`, SERVICES) para leitura real
+ * do catálogo cadastrado na Plataforma Vecorion (banco compartilhado) —
+ * todo serviço criado por lá aparece aqui automaticamente, sem precisar
+ * editar código deste site a cada novo serviço.
+ *
+ * Preço não é exibido de propósito — mantém a prática já estabelecida
+ * deste site ("preço único, definido conforme o escopo combinado no
+ * orçamento"), não uma limitação técnica.
+ */
+export default async function ServicosPage() {
+  const servicos = await listarServicosAtivos();
+
   return (
     <>
       <section className="section-y">
@@ -23,26 +35,32 @@ export default function ServicosPage() {
               as="h1"
               eyebrow="O que fazemos"
               title="Nossos serviços"
-              description="Soluções digitais pensadas para apresentar sua empresa e gerar resultado real."
+              description="Escolha um serviço e conte pra gente o que você precisa — preparamos um orçamento sob medida."
             />
           </Reveal>
 
-          <div className="grid gap-8 sm:grid-cols-2">
-            {SERVICES.map((service, index) => (
-              <Reveal key={service.slug} delay={index * 100}>
-                <Card surface="mist" className="gap-4 p-8">
-                  <h2 className="text-xl font-semibold">{service.title}</h2>
-                  <p className="text-sm text-ink/70">{service.summary}</p>
-                  <WhatsAppButton
-                    variant="ghost"
-                    message={`Olá! Quero saber mais sobre "${service.title}".`}
-                  >
-                    Pedir orçamento →
-                  </WhatsAppButton>
-                </Card>
-              </Reveal>
-            ))}
-          </div>
+          {servicos.length === 0 ? (
+            <p className="text-center text-sm text-ink/60">
+              Nenhum serviço disponível no momento. Fale com a gente pelo WhatsApp.
+            </p>
+          ) : (
+            <div className="grid gap-8 sm:grid-cols-2">
+              {servicos.map((servico, index) => (
+                <Reveal key={servico.id} delay={index * 100}>
+                  <Card surface="mist" className="gap-4 p-8">
+                    <h2 className="text-xl font-semibold">{servico.nome}</h2>
+                    {servico.descricao && <p className="text-sm text-ink/70">{servico.descricao}</p>}
+                    <Link
+                      href={`/servicos/${servico.id}/briefing`}
+                      className="text-sm font-semibold text-brand underline-offset-4 hover:text-brand-light hover:underline"
+                    >
+                      Preencher briefing →
+                    </Link>
+                  </Card>
+                </Reveal>
+              ))}
+            </div>
+          )}
 
           <Reveal>
             <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 rounded-card border border-black/5 bg-paper p-8 text-center">
@@ -57,7 +75,7 @@ export default function ServicosPage() {
       </section>
 
       <CtaBanner
-        title="Pronto para tirar seu site do papel?"
+        title="Pronto para tirar seu projeto do papel?"
         description="Conte pra gente o que você precisa e receba um orçamento sem compromisso."
       />
     </>
