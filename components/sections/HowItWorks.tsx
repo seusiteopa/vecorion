@@ -1,6 +1,6 @@
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import Card from "@/components/ui/Card";
 import { HOW_IT_WORKS } from "@/lib/constants";
@@ -38,9 +38,9 @@ export default function HowItWorks() {
         </ol>
 
         <div className="flex justify-center">
-          <WhatsAppButton message="Olá! Quero começar meu projeto com a Vecorion.">
+          <Button href="/servicos" variant="primary">
             Quero começar meu projeto
-          </WhatsAppButton>
+          </Button>
         </div>
       </Container>
     </section>

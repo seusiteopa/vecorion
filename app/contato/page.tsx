@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import Reveal from "@/components/ui/Reveal";
 import ContactRedirectForm from "@/components/sections/ContactRedirectForm";
 import { CONTACT } from "@/lib/constants";
@@ -27,8 +26,9 @@ export default function ContatoPage() {
             />
 
             <div className="flex flex-col gap-3">
-              <WhatsAppButton className="w-fit">Falar no WhatsApp</WhatsAppButton>
-              <span className="text-sm text-ink/60">{CONTACT.phoneDisplay}</span>
+              <span className="text-sm text-ink/60">
+                Fale pelo ícone de WhatsApp no canto da tela, ou pelo número {CONTACT.phoneDisplay}
+              </span>
               <a
                 href={CONTACT.instagram}
                 target="_blank"

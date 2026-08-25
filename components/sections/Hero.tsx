@@ -1,5 +1,4 @@
 import Container from "@/components/ui/Container";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import { SITE } from "@/lib/constants";
@@ -34,9 +33,9 @@ export default function Hero() {
         </Reveal>
         <Reveal delay={200}>
           <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-            <WhatsAppButton message="Olá! Quero criar meu site com a Vecorion.">
-              Falar no WhatsApp
-            </WhatsAppButton>
+            <Button href="/servicos" variant="primary">
+              Ver nossos serviços
+            </Button>
             <Button href="#como-funciona" variant="secondary">
               Ver como funciona
             </Button>

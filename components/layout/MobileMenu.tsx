@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { NAV_ITEMS } from "@/lib/constants";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 /**
  * Único componente "client" do layout — precisa de estado local (aberto/fechado).
@@ -57,9 +56,6 @@ export default function MobileMenu() {
               {item.label}
             </Link>
           ))}
-          <div className="mt-3">
-            <WhatsAppButton className="w-full" />
-          </div>
         </div>
       )}
     </div>

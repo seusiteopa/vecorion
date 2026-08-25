@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import Logo from "@/components/ui/Logo";
 import { NAV_ITEMS } from "@/lib/constants";
 import MobileMenu from "./MobileMenu";
 
 /**
- * Header fixo (sticky). Mantém o CTA de WhatsApp sempre visível,
- * conforme decisão da Etapa 3 — nenhuma versão do menu deve escondê-lo.
+ * Header fixo (sticky). O CTA de contato deixou de ficar duplicado aqui —
+ * o ícone flutuante de WhatsApp (montado uma vez em app/layout.tsx) já
+ * cobre o site inteiro, inclusive esta barra.
  */
 export default function Header() {
   return (
@@ -28,10 +28,6 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-
-        <div className="hidden md:block">
-          <WhatsAppButton />
-        </div>
 
         <MobileMenu />
       </Container>

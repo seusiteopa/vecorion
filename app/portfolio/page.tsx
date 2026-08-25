@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import Button from "@/components/ui/Button";
 import Reveal from "@/components/ui/Reveal";
 import Card from "@/components/ui/Card";
 import { HOW_IT_WORKS } from "@/lib/constants";
@@ -48,9 +48,9 @@ export default function PortfolioPage() {
         </ol>
 
         <div className="flex justify-center">
-          <WhatsAppButton message="Olá! Quero ser um dos primeiros projetos da Vecorion.">
+          <Button href="/servicos" variant="primary">
             Quero ser um dos primeiros projetos
-          </WhatsAppButton>
+          </Button>
         </div>
       </Container>
     </section>

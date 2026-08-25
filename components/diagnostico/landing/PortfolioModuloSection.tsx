@@ -1,7 +1,7 @@
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import Button from "@/components/ui/Button";
 
 /**
  * Nenhum case real foi fornecido em nenhuma etapa deste projeto (mesma pendência já
@@ -36,9 +36,9 @@ export default function PortfolioModuloSection() {
         </Reveal>
 
         <Reveal delay={160}>
-          <WhatsAppButton variant="ghost" message="Olá! Quero saber mais sobre cases do Diagnóstico Digital.">
-            Quer ser o primeiro case? Fale com a gente →
-          </WhatsAppButton>
+          <Button href="/diagnostico/formulario" variant="ghost">
+            Quer ser o primeiro case? Comece seu diagnóstico →
+          </Button>
         </Reveal>
       </Container>
     </section>

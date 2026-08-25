@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { NAV_ITEMS } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -40,8 +39,6 @@ export default function NotFound() {
             </Link>
           ))}
         </div>
-
-        <WhatsAppButton className="mt-4" />
       </Container>
     </section>
   );

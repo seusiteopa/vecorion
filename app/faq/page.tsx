@@ -33,7 +33,9 @@ export default function FaqPage() {
       <FaqAccordion headingAs="h1" />
       <CtaBanner
         title="Ainda com dúvidas?"
-        description="Fale direto com a gente pelo WhatsApp e responderemos rapidinho."
+        description="Veja nossos serviços ou fale direto com a gente pelo ícone de WhatsApp no canto da tela."
+        ctaHref="/contato"
+        ctaLabel="Falar com a gente"
       />
     </>
   );

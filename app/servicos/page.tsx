@@ -77,6 +77,8 @@ export default async function ServicosPage() {
       <CtaBanner
         title="Pronto para tirar seu projeto do papel?"
         description="Conte pra gente o que você precisa e receba um orçamento sem compromisso."
+        ctaHref="/contato"
+        ctaLabel="Falar com a gente"
       />
     </>
   );

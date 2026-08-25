@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
@@ -42,14 +41,9 @@ export default function ConfirmacaoPage() {
         </Reveal>
 
         <Reveal delay={260}>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Button href="/" variant="secondary">
-              Voltar para o site
-            </Button>
-            <WhatsAppButton message="Olá! Acabei de enviar um diagnóstico pelo site da Vecorion.">
-              Falar no WhatsApp
-            </WhatsAppButton>
-          </div>
+          <Button href="/" variant="secondary">
+            Voltar para o site
+          </Button>
         </Reveal>
 
         <Reveal delay={320}>

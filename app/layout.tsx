@@ -3,6 +3,7 @@ import "@fontsource-variable/sora/wght.css";
 import "@fontsource-variable/inter/wght.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import WhatsAppFloating from "@/components/ui/WhatsAppFloating";
 import { CONTACT, SITE } from "@/lib/constants";
 import "./globals.css";
 
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        <WhatsAppFloating />
       </body>
     </html>
   );

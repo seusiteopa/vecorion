@@ -70,6 +70,8 @@ export default function DiagnosticoPage() {
       <CtaBanner
         title="Tem um processo que está consumindo tempo?"
         description="Você não precisa saber qual tecnologia utilizar. Conte-nos o que está acontecendo e nós analisamos o processo para identificar possíveis soluções."
+        ctaHref="/diagnostico/formulario"
+        ctaLabel="Começar diagnóstico"
       />
     </>
   );
