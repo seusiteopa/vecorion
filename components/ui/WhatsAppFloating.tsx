@@ -2,7 +2,7 @@ import { whatsappHref } from "@/lib/constants";
 
 /**
  * Substitui os ~9 botões "Falar no WhatsApp" espalhados pelo site (Hero,
- * Header, MobileMenu, CtaBanner, HowItWorks, portfolio, contato,
+ * Header, MobileMenu, CtaBanner, portfolio, contato,
  * not-found, diagnóstico/confirmação) por um único ponto de contato,
  * sempre visível, em toda página — decisão do dono do produto.
  *

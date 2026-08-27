@@ -13,7 +13,7 @@ const SURFACE_STYLES: Record<NonNullable<CardProps["surface"]>, string> = {
 
 /**
  * Card com hover padrão (elevação + sombra), extraído para eliminar a repetição
- * das mesmas classes em HowItWorks, ServicesOverview, Portfolio e Serviços.
+ * das mesmas classes em ServicesOverview, Portfolio e Serviços.
  */
 export default function Card({ children, surface = "paper", className = "", ...rest }: CardProps) {
   return (

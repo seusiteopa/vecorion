@@ -32,14 +32,9 @@ export default function Hero() {
           <p className="max-w-xl text-base text-ink/70 sm:text-lg">{SITE.description}</p>
         </Reveal>
         <Reveal delay={200}>
-          <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-            <Button href="/servicos" variant="primary">
-              Ver nossos serviços
-            </Button>
-            <Button href="#como-funciona" variant="secondary">
-              Ver como funciona
-            </Button>
-          </div>
+          <Button href="/servicos" variant="primary" className="mt-2">
+            Ver nossos serviços
+          </Button>
         </Reveal>
       </Container>
     </section>

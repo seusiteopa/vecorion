@@ -14,9 +14,9 @@ export const SITE = {
 };
 
 export const CONTACT = {
-  whatsappNumber: "5519991255529", // formato internacional, sem símbolos
+  whatsappNumber: "5519901892801", // formato internacional, sem símbolos
   whatsappMessage: "Olá! Vim pelo site da Vecorion e gostaria de saber mais.",
-  phoneDisplay: "(19) 99125-5529",
+  phoneDisplay: "(19) 90189-2801",
   email: "", // pendente de definição pelo cliente
   instagram: "https://instagram.com/vecorion",
   facebook: "", // pendente
