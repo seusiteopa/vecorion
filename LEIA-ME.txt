@@ -1,0 +1,32 @@
+VECORION — SITE (entrega final)
+
+ARQUIVOS (manter esta estrutura)
+  index.html        página completa (HTML, CSS, JS e SVG dentro de um único arquivo)
+  og-image.png      imagem de prévia do link (1200x630)
+  img/lanche.webp   print do site Lanche da Praça
+  img/tubarao.webp  print do site Boca do Tubarão
+  img/imagens.webp  print do Gerador de imagens Vecorion
+
+COMO PUBLICAR NO NETLIFY
+  1. Extraia o zip e mantenha a pasta com os arquivos acima.
+  2. No Netlify, arraste a pasta inteira para "Deploy manually" (ou atualize o site existente).
+  3. Se o endereço final NÃO for https://crieseusitevecorion.netlify.app/,
+     troque esse endereço em 3 lugares do index.html: canonical, og:url e og:image
+     (e "url" dentro do bloco JSON-LD).
+  4. Depois de publicar, cole o link numa conversa do WhatsApp para conferir a prévia.
+
+COMO EDITAR
+  WhatsApp: no final do index.html, procure phone:"5519991892801".
+  Instagram: procure instagram.com/vecorion.
+  Textos: estão em HTML comum, dentro de cada <section>.
+  Novo site na galeria: copie um bloco <figure>...</figure> da seção #possibilidades,
+  salve o print em img/ (WebP, ~800 px de largura) e ajuste nome e descrição.
+  Ano do rodapé: procure "© 2026".
+
+SEM BANCO DE DADOS, SEM SERVIDOR, SEM SERVIÇOS EXTERNOS.
+O formulário monta a mensagem e abre o WhatsApp; nada é guardado no site.
+
+PENDENTE ANTES DE DIVULGAR
+  - Confirmar permissão dos clientes para exibir nome e print.
+  - Incluir o site de veículos (precisa de print com o estoque carregado).
+  - Testar em iPhone e Android reais.
